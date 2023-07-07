@@ -10,18 +10,19 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/header.css' %}" rel="stylesheet">
-    <link href="{% static 'css/hero.css' %}" rel="stylesheet">
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/categories.css' %}" rel="stylesheet">
     <link href="{% static 'css/album.css' %}" rel="stylesheet">
     <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+    <link href="{% static 'css/hero.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
 
     <!-- HEADER -->
-    {% include 'base/header.html' %}
+    {% include 'base/navbar.html' %}
 
     <!-- CONTENT -->
     {% block content %}
