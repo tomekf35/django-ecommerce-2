@@ -133,3 +133,5 @@ LOGIN_REDIRECT_URL = "core:index"
 LOGOUT_REDIRECT_URL = "accounts:login"
 
 SESSION_COOKIE_AGE = 7 * 24 * 60 * 60
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
