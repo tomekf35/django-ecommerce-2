@@ -32,8 +32,30 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li><button type="button" class="btn btn-outline-light me-2">Favourites</button></li>
-                    <li><button type="button" class="btn btn-outline-light me-2">Cart</button></li>
-                    <li><a href="{% url 'accounts:logout' %}" class="btn btn-outline-light">Logout</a>
+                    <li><button type="button" class="btn btn-outline-light me-4">Cart</button></li>
+                    <li>
+                        <div class="dropdown text-end">
+                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+                                    class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small bg-dark">
+                                <li>
+                                    <p class="dropdown-item text-white">{{ user.username }}</p>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider bg-secondary">
+                                </li>
+                                <li><a class="dropdown-item text-white" href="#">Settings</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider bg-secondary">
+                                </li>
+                                <li><a href="{% url 'accounts:logout' %}" class="dropdown-item text-white">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     {% else %}
                     <li><a href="{% url 'accounts:login' %}" class="btn btn-warning">Sign in</a></li>
