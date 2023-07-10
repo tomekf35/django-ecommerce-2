@@ -36,8 +36,7 @@
                     <li><a href="{% url 'accounts:logout' %}" class="btn btn-outline-light">Logout</a>
                     </li>
                     {% else %}
-                    <li><a href="{% url 'accounts:login' %}" class="btn btn-outline-light me-2">Login</a></li>
-                    <li><button type="button" class="btn btn-warning">Sign-up</button></li>
+                    <li><a href="{% url 'accounts:login' %}" class="btn btn-warning">Sign in</a></li>
                     {% endif %}
                 </ul>
             </div>
