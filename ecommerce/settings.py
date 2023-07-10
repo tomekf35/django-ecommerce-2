@@ -130,6 +130,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 LOGIN_REDIRECT_URL = "core:index"
-LOGOUT_REDIRECT_URL = "core:index"
+LOGOUT_REDIRECT_URL = "accounts:login"
 
 SESSION_COOKIE_AGE = 7 * 24 * 60 * 60

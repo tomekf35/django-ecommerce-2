@@ -47,8 +47,11 @@
                                 <li>
                                     <hr class="dropdown-divider bg-secondary">
                                 </li>
-                                <li><a class="dropdown-item text-white" href="#">Settings</a></li>
-                                <li><a class="dropdown-item text-white" href="#">Profile</a></li>
+                                <li><a class="dropdown-item text-white"
+                                        href="{% url 'accounts:user_profile' user.username %}">Profile</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Purchases</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Rate product</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Rate vendor</a></li>
                                 <li>
                                     <hr class="dropdown-divider bg-secondary">
                                 </li>

@@ -1,8 +1,11 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
-from .forms import CustomUserCreationForm, LoginForm
+from django.contrib.auth.views import PasswordChangeDoneView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from .forms import CustomUserCreationForm, LoginForm
+from .models import CustomUser
 
 
 class SignupPageView(CreateView):
@@ -28,3 +31,8 @@ def login_view(request):
         form = LoginForm()
 
     return render(request, "registration/login.html", {"form": form})
+
+
+@login_required
+def user_profile_view(request, username):
+    return render(request, "user/profile.html")
