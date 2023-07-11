@@ -3,9 +3,10 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+    birth_date = models.DateField(null=True)
+    profile_picture = models.ImageField(upload_to="avatars/", blank=True)
     is_vendor = models.BooleanField(default=False)
     company_name = models.CharField(max_length=255, blank=True)
-    profile_picture = models.ImageField(upload_to="avatars/", blank=True)
     about = models.TextField(blank=True)
     social_media = models.JSONField(blank=True, null=True)
 

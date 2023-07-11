@@ -1,10 +1,10 @@
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 from django.contrib.auth.views import PasswordChangeDoneView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserCreationForm, LoginForm
+from .forms import CustomUserCreationForm, CustomUserEditForm, LoginForm
 from .models import CustomUser
 
 
@@ -35,12 +35,23 @@ def login_view(request):
 
 @login_required
 def user_profile_view(request, username):
-    return render(request, "user/profile.html")
+    user = get_object_or_404(CustomUser, username=username)
+    return render(request, "user/profile.html", {"user": user})
 
 
 @login_required
 def user_edit_personal_view(request, username):
-    return render(request, "user/edit_personal.html")
+    user = get_object_or_404(CustomUser, username=username)
+
+    if request.method == "POST":
+        form = CustomUserEditForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect("accounts:user_profile", username=username)
+    else:
+        form = CustomUserEditForm(instance=user)
+
+    return render(request, "user/edit_personal.html", {"form": form})
 
 
 @login_required
