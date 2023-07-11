@@ -7,7 +7,7 @@ Green Market | {{user.username}}
 {% block content %}
 <main class="form-signin vh-100 m-auto mt-4 justify-content-center">
     <h1>Profile: {{user.username}}</h1>
-    <p><a href="{% url 'accounts:password_change' %}">Change your password</a></p>
+    <p><a href="{% url 'password_change' %}">Change your password</a></p>
 </main>
 {% include 'base/footer.html' %}
 {% endblock %}
