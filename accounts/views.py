@@ -36,3 +36,18 @@ def login_view(request):
 @login_required
 def user_profile_view(request, username):
     return render(request, "user/profile.html")
+
+
+@login_required
+def user_edit_personal_view(request, username):
+    return render(request, "user/edit_personal.html")
+
+
+@login_required
+def user_edit_address_view(request, username):
+    return render(request, "user/edit_address.html")
+
+
+@login_required
+def user_edit_phone_view(request, username):
+    return render(request, "user/edit_phone.html")

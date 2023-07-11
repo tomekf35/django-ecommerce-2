@@ -1,0 +1,32 @@
+<div class="col-auto px-sm-2 px-0 bg-primary h-500px">
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <li class="nav-item">
+                <a href="{% url 'accounts:user_profile' user.username %}"
+                    class="nav-link align-middle px-0 text-white">{{user.username}} profile</a>
+            </li>
+            <li>
+                <hr>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'accounts:user_edit_personal' user.username %}"
+                    class="nav-link align-middle px-0 text-white">Edit personal info</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'accounts:user_edit_address' user.username %}"
+                    class="nav-link align-middle px-0 text-white">Edit adresses</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'accounts:user_edit_phone' user.username %}"
+                    class="nav-link align-middle px-0 text-white">Edit phone numbers</a>
+            </li>
+            <li>
+                <hr>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'password_change' %}" class="nav-link align-middle px-0 text-white">Change
+                    password</a>
+            </li>
+        </ul>
+    </div>
+</div>
