@@ -12,10 +12,19 @@
             <div class="vh-100 m-auto mt-4 justify-content-center">
                 <div>
                     <h2 class="text-center">Edit Adress form here</h2>
-                    <hr>
-                    <br>
-                    <br>
-                    <br>
+                    <div class="container d-flex text-center m-2">
+                        {% for address in addresses %}
+                        <div class="container">
+                            <div>{{address.address_title}}</div>
+                            <div>{{address.address_line_1}}</div>
+                            <div>{{address.address_line_2}}</div>
+                            <div>{{address.city}}</div>
+                            <div>{{address.postal_code}}</div>
+                            <div>{{address.state}}</div>
+                            <div>{{address.country}}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

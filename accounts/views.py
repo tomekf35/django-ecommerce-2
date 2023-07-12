@@ -36,7 +36,13 @@ def login_view(request):
 @login_required
 def user_profile_view(request, username):
     user = get_object_or_404(CustomUser, username=username)
-    return render(request, "user/profile.html", {"user": user})
+    addres_list = user.addresses.all()
+    phone_list = user.phone_numbers.all()
+    return render(
+        request,
+        "user/profile.html",
+        {"user": user, "addres_list": addres_list, "phone_list": phone_list},
+    )
 
 
 @login_required
@@ -56,7 +62,9 @@ def user_edit_personal_view(request, username):
 
 @login_required
 def user_edit_address_view(request, username):
-    return render(request, "user/edit_address.html")
+    user = get_object_or_404(CustomUser, username=username)
+    addres_list = user.addresses.all()
+    return render(request, "user/edit_address.html", {"addres_list": addres_list})
 
 
 @login_required

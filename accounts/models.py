@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     social_media = models.JSONField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.email} {self.username}"
+        return f"{self.username}, {self.email}"
 
 
 class Address(models.Model):
@@ -27,9 +27,7 @@ class Address(models.Model):
     country = models.CharField(max_length=255)
 
     def __str__(self):
-        return (
-            f"{self.address_title} {self.address_line_1}, {self.city}, {self.country}"
-        )
+        return f"{self.user} | {self.address_title}: {self.address_line_1}, {self.city}, {self.country}"
 
 
 class PhoneNumber(models.Model):
@@ -40,4 +38,4 @@ class PhoneNumber(models.Model):
     number = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"{self.phone_title} {self.number}"
+        return f"{self.user} | {self.phone_title}: {self.number}"

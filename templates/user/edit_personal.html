@@ -11,7 +11,8 @@
         <div class=" col py-3">
             <div class="vh-100 m-auto mt-4 justify-content-center">
                 <div>
-                    <h2 class="text-center">Edit Personal form here</h2>
+                    <h2 class="text-center">Edit personal information</h2>
+                    <hr>
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
