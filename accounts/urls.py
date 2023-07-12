@@ -28,4 +28,9 @@ urlpatterns = [
         views.user_edit_phone_view,
         name="user_edit_phone",
     ),
+    path(
+        "<str:username>/edit_phone/form/<int:phone_id>",
+        views.user_edit_phone_form_view,
+        name="user_edit_phone_form",
+    ),
 ]

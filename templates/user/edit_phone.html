@@ -11,11 +11,17 @@
         <div class=" col py-3">
             <div class="vh-100 m-auto mt-4 justify-content-center">
                 <div>
-                    <h2 class="text-center">Edit Phone form here</h2>
-                    <hr>
-                    <br>
-                    <br>
-                    <br>
+                    <h2 class="text-center">Edit Phone Numbers</h2>
+                    <div class="container d-flex text-center m-2">
+                        {% for phone in phone_list %}
+                        <div class="container">
+                            <div>{{phone.phone_title}}</div>
+                            <div>{{phone.number}}</div>
+                            <a href="{% url 'accounts:user_edit_phone_form' user.username phone.id %}"
+                                class="btn btn-primary">Edit</a>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

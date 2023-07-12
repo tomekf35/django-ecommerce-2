@@ -9,6 +9,7 @@ from .forms import (
     CustomUserEditForm,
     LoginForm,
     AddressEditForm,
+    PhoneNumberEditForm,
 )
 from .models import CustomUser
 
@@ -94,4 +95,24 @@ def user_edit_address_form_view(request, username, address_id):
 
 @login_required
 def user_edit_phone_view(request, username):
-    return render(request, "user/edit_phone.html")
+    user = get_object_or_404(CustomUser, username=username)
+    phone_list = user.phone_numbers.all()
+    return render(request, "user/edit_phone.html", {"phone_list": phone_list})
+
+
+@login_required
+def user_edit_phone_form_view(request, username, phone_id):
+    user = get_object_or_404(CustomUser, username=username)
+    phone = user.phone_numbers.get(id=phone_id)
+
+    if request.method == "POST":
+        form = PhoneNumberEditForm(request.POST, instance=phone)
+        if form.is_valid():
+            phone = form.save(commit=False)
+            phone.user = user
+            phone.save()
+            return redirect("accounts:user_edit_phone", username=username)
+    else:
+        form = PhoneNumberEditForm(instance=phone)
+
+    return render(request, "user/edit_phone_form.html", {"phone": phone, "form": form})

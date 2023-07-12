@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Address
+from .models import CustomUser, Address, PhoneNumber
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -43,4 +43,13 @@ class AddressEditForm(forms.ModelForm):
             "state",
             "postal_code",
             "country",
+        ]
+
+
+class PhoneNumberEditForm(forms.ModelForm):
+    class Meta:
+        model = PhoneNumber
+        fields = [
+            "phone_title",
+            "number",
         ]
