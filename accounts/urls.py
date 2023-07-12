@@ -19,6 +19,11 @@ urlpatterns = [
         name="user_edit_address",
     ),
     path(
+        "<str:username>/edit_address/form/<int:address_id>",
+        views.user_edit_address_form_view,
+        name="user_edit_address_form",
+    ),
+    path(
         "<str:username>/edit_phone/",
         views.user_edit_phone_view,
         name="user_edit_phone",

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Address
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -30,3 +30,17 @@ class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
     remember_me = forms.BooleanField(required=False)
+
+
+class AddressEditForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = [
+            "address_title",
+            "address_line_1",
+            "address_line_2",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+        ]

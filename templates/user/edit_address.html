@@ -13,7 +13,7 @@
                 <div>
                     <h2 class="text-center">Edit Adress form here</h2>
                     <div class="container d-flex text-center m-2">
-                        {% for address in addresses %}
+                        {% for address in addres_list %}
                         <div class="container">
                             <div>{{address.address_title}}</div>
                             <div>{{address.address_line_1}}</div>
@@ -22,6 +22,8 @@
                             <div>{{address.postal_code}}</div>
                             <div>{{address.state}}</div>
                             <div>{{address.country}}</div>
+                            <a href="{% url 'accounts:user_edit_address_form' user.username address.id %}"
+                                class="btn btn-primary">Edit</a>
                         </div>
                         {% endfor %}
                     </div>

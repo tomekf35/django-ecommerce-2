@@ -4,7 +4,12 @@ from django.contrib.auth.views import PasswordChangeDoneView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserCreationForm, CustomUserEditForm, LoginForm
+from .forms import (
+    CustomUserCreationForm,
+    CustomUserEditForm,
+    LoginForm,
+    AddressEditForm,
+)
 from .models import CustomUser
 
 
@@ -65,6 +70,26 @@ def user_edit_address_view(request, username):
     user = get_object_or_404(CustomUser, username=username)
     addres_list = user.addresses.all()
     return render(request, "user/edit_address.html", {"addres_list": addres_list})
+
+
+@login_required
+def user_edit_address_form_view(request, username, address_id):
+    user = get_object_or_404(CustomUser, username=username)
+    address = user.addresses.get(id=address_id)
+
+    if request.method == "POST":
+        form = AddressEditForm(request.POST, instance=address)
+        if form.is_valid():
+            address = form.save(commit=False)
+            address.user = user
+            address.save()
+            return redirect("accounts:user_edit_address", username=username)
+    else:
+        form = AddressEditForm(instance=address)
+
+    return render(
+        request, "user/edit_address_form.html", {"address": address, "form": form}
+    )
 
 
 @login_required

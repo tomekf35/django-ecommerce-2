@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+{{user.username}} | Edit Address
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        {% include 'user/sidebar.html' %}
+        <div class=" col py-3">
+            <div class="vh-100 m-auto mt-4 justify-content-center">
+                <div>
+                    <h2 class="text-center">Edit Address</h2>
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'base/footer.html' %}
+{% endblock %}
