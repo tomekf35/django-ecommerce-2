@@ -24,6 +24,16 @@ urlpatterns = [
         name="user_edit_address_form",
     ),
     path(
+        "<str:username>/edit_address/form/add",
+        views.user_add_address_form_view,
+        name="user_add_address_form",
+    ),
+    path(
+        "<str:username>/edit_address/<int:address_id>/delete/",
+        views.user_delete_address_view,
+        name="user_delete_address",
+    ),
+    path(
         "<str:username>/edit_phone/",
         views.user_edit_phone_view,
         name="user_edit_phone",
@@ -32,5 +42,15 @@ urlpatterns = [
         "<str:username>/edit_phone/form/<int:phone_id>",
         views.user_edit_phone_form_view,
         name="user_edit_phone_form",
+    ),
+    path(
+        "<str:username>/edit_phone/form/add",
+        views.user_add_phone_form_view,
+        name="user_add_phone_form",
+    ),
+    path(
+        "<str:username>/edit_phone/<int:phone_id>/delete/",
+        views.user_delete_phone_view,
+        name="user_delete_phone",
     ),
 ]

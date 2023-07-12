@@ -12,6 +12,7 @@
             <div class="vh-100 m-auto mt-4 justify-content-center">
                 <div>
                     <h2 class="text-center">Edit Adress form here</h2>
+                    <hr>
                     <div class="container d-flex text-center m-2">
                         {% for address in addres_list %}
                         <div class="container">
@@ -24,8 +25,14 @@
                             <div>{{address.country}}</div>
                             <a href="{% url 'accounts:user_edit_address_form' user.username address.id %}"
                                 class="btn btn-primary">Edit</a>
+                            <a href="{% url 'accounts:user_delete_address' user.username address.id %}"
+                                class="btn btn-danger">Delete</a>
                         </div>
                         {% endfor %}
+                        <div class="container">
+                            <a href="{% url 'accounts:user_add_address_form' user.username %}" class="btn btn-primary">+
+                                Add new</a>
+                        </div>
                     </div>
                 </div>
             </div>

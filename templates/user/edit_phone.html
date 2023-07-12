@@ -12,6 +12,7 @@
             <div class="vh-100 m-auto mt-4 justify-content-center">
                 <div>
                     <h2 class="text-center">Edit Phone Numbers</h2>
+                    <hr>
                     <div class="container d-flex text-center m-2">
                         {% for phone in phone_list %}
                         <div class="container">
@@ -19,8 +20,16 @@
                             <div>{{phone.number}}</div>
                             <a href="{% url 'accounts:user_edit_phone_form' user.username phone.id %}"
                                 class="btn btn-primary">Edit</a>
+                            <a href="{% url 'accounts:user_delete_phone' user.username phone.id %}"
+                                class="btn btn-danger">Delete</a>
                         </div>
                         {% endfor %}
+                        <div class="container">
+                            <a href="{% url 'accounts:user_add_phone_form' user.username %}" class="btn btn-primary">
+                                + Add new
+                            </a>
+
+                        </div>
                     </div>
                 </div>
             </div>

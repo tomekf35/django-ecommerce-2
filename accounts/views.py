@@ -116,3 +116,51 @@ def user_edit_phone_form_view(request, username, phone_id):
         form = PhoneNumberEditForm(instance=phone)
 
     return render(request, "user/edit_phone_form.html", {"phone": phone, "form": form})
+
+
+@login_required
+def user_add_phone_form_view(request, username):
+    user = get_object_or_404(CustomUser, username=username)
+    if request.method == "POST":
+        form = PhoneNumberEditForm(request.POST)
+        if form.is_valid():
+            phone = form.save(commit=False)
+            phone.user = user
+            phone.save()
+            return redirect("accounts:user_edit_phone", username=username)
+    else:
+        form = PhoneNumberEditForm()
+
+    return render(request, "user/edit_phone_form.html", {"form": form})
+
+
+@login_required
+def user_add_address_form_view(request, username):
+    user = get_object_or_404(CustomUser, username=username)
+    if request.method == "POST":
+        form = AddressEditForm(request.POST)
+        if form.is_valid():
+            address = form.save(commit=False)
+            address.user = user
+            address.save()
+            return redirect("accounts:user_edit_address", username=username)
+    else:
+        form = AddressEditForm()
+
+    return render(request, "user/edit_address_form.html", {"form": form})
+
+
+@login_required
+def user_delete_phone_view(request, username, phone_id):
+    user = get_object_or_404(CustomUser, username=username)
+    phone = user.phone_numbers.get(id=phone_id)
+    phone.delete()
+    return redirect("accounts:user_edit_phone", username=username)
+
+
+@login_required
+def user_delete_address_view(request, username, address_id):
+    user = get_object_or_404(CustomUser, username=username)
+    address = user.addresses.get(id=address_id)
+    address.delete()
+    return redirect("accounts:user_edit_address", username=username)
