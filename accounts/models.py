@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     social_media = models.JSONField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.username}, {self.email}"
+        return self.username
 
 
 class Address(models.Model):
