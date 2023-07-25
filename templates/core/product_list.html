@@ -5,5 +5,14 @@ Green Market | Shop
 {% endblock %}
 
 {% block content %}
-
+<div class="container">
+    {% for product in products %}
+    <div class="">
+        {{product.name}}
+        {{product.description}}
+    </div>
+    {% empty %}
+    <p>No products</p>
+    {% endfor %}
+</div>
 {% endblock %}
